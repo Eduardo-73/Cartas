@@ -21,7 +21,7 @@ public class Naipe {
 
     // Contructores
     public Naipe() {
-        this.numCarta = new Random().nextInt(0, 11);
+        this.numCarta = new Random().nextInt(1, 11);
         int numAleatorio = new Random().nextInt(1, 4 + 1);
         switch (numAleatorio) {
             case 1 -> {
@@ -40,10 +40,10 @@ public class Naipe {
     }
 
     public Naipe(int numCarta, Palo palo) {
-        if (numCarta <= 1 || numCarta >= 10) {
-            this.numCarta = numCarta;
-        } else {
+        if (numCarta < 1 || numCarta > 10) {
             this.numCarta = volverElegirNumCarta();
+        } else {
+            this.numCarta = numCarta;
         }
         this.palo = palo;
     }
@@ -52,14 +52,15 @@ public class Naipe {
     public int volverElegirNumCarta() {
         int numero = 0;
         do {
-            System.out.println("Elige el número de cartas,"
+            System.out.println("Elige el número de cartas (1 al 10),"
                     + " ya que lo has escedido antes:");
             try {
                 numero = teclado.nextInt();
             } catch (InputMismatchException ime) {
                 System.out.println("Escribe un número del 1 al 10");
+                teclado.nextLine();
             }
-        } while (numero <= 1 || numero >= 10);
+        } while (numero < 1 || numero > 10);
         return numero;
     }
 

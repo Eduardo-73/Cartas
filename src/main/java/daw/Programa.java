@@ -12,13 +12,14 @@ public class Programa {
 
     public static void main(String[] args) {
 
+        System.out.println("Apartado 1º");
         Naipe c1 = new Naipe();
         System.out.println(c1);
-
-        Naipe[] array = new Naipe[2];
-        array[0] = new Naipe();
-        array[1] = new Naipe();
-        Baraja b1 = new Baraja(array);
+        Naipe c2 = new Naipe(15, Palo.ESPADAS);
+        System.out.println(c2);
+        System.out.println("Apartado 2º");
+        Baraja b1 = new Baraja();
         System.out.println(b1);
+
     }
 }

@@ -4,6 +4,8 @@
  */
 package daw;
 
+import java.util.Scanner;
+
 /**
  *
  * @author eduar
@@ -14,8 +16,20 @@ public class Baraja {
     private Naipe[] arrayNaipe;
 
     // Construcctor
-    public Baraja(Naipe[] arrayNaipe) {
-        this.arrayNaipe = arrayNaipe;
+    public Baraja() {
+        this.arrayNaipe = new Naipe[tamañoArray()];
+        for (int i = 0; i < arrayNaipe.length; i++) {
+            arrayNaipe[i] = new Naipe();
+        }
+    }
+
+    // Métodos
+    public int tamañoArray() {
+        Scanner teclado = new Scanner(System.in);
+        int num;
+        System.out.print("Introduce el tamaño de la baraja: ");
+        num = teclado.nextInt();
+        return num;
     }
 
     // Getters y Setters
@@ -32,7 +46,7 @@ public class Baraja {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < arrayNaipe.length; i++) {
-            sb.append("arrayNaipe " + (i + 1) + "º = " ).append(arrayNaipe[i] + "\n");
+            sb.append("arrayNaipe " + (i + 1) + "º = ").append(arrayNaipe[i] + "\n");
         }
         return sb.toString();
     }
