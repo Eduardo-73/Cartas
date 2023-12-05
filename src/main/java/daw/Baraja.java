@@ -13,23 +13,16 @@ import java.util.Scanner;
 public class Baraja {
 
     // Atributos
-    private Naipe[] arrayNaipe;
+    private final Naipe[] arrayNaipe;
 
     // Construcctor
     public Baraja() {
-        this.arrayNaipe = new Naipe[tamañoArray()];
+        this.arrayNaipe = new Naipe[40];
         for (int i = 0; i < arrayNaipe.length; i++) {
-            arrayNaipe[i] = new Naipe();
+            for (int j = 0; j < 10; j++) {
+                arrayNaipe[j] = new Naipe(j + 1, Palo.OROS);
+            }
         }
-    }
-
-    // Métodos
-    public int tamañoArray() {
-        Scanner teclado = new Scanner(System.in);
-        int num;
-        System.out.print("Introduce el tamaño de la baraja: ");
-        num = teclado.nextInt();
-        return num;
     }
 
     // Getters y Setters
@@ -37,16 +30,12 @@ public class Baraja {
         return arrayNaipe;
     }
 
-    public void setArrayNaipe(Naipe[] arrayNaipe) {
-        this.arrayNaipe = arrayNaipe;
-    }
-
     // ToString
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < arrayNaipe.length; i++) {
-            sb.append("arrayNaipe " + (i + 1) + "º = ").append(arrayNaipe[i] + "\n");
+            sb.append((i + 1) + "º Naipe de la baraja " + "= ").append(arrayNaipe[i] + "\n");
         }
         return sb.toString();
     }

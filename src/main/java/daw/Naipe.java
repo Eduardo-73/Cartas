@@ -85,10 +85,21 @@ public class Naipe {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Naipe{");
-        sb.append("numCarta=").append(numCarta);
-        sb.append(", palo=").append(palo);
-        sb.append('}');
+        switch (numCarta) {
+            case 1, 2, 3, 4, 5, 6, 7 -> {
+                sb.append(numCarta);
+                sb.append(" de ").append(palo);
+            }
+            case 8 -> {
+                sb.append("Sota de ").append(palo);
+            }
+            case 9 -> {
+                sb.append("Caballo de ").append(palo);
+            }
+            case 10 -> {
+                sb.append("Rey de ").append(palo);
+            }
+        }
         return sb.toString();
     }
 }
