@@ -1,4 +1,4 @@
-/*
+ /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
@@ -16,7 +16,7 @@ import parteA.Palo;
 public class Baraja {
 
     // Atributos
-    private final Naipe[] arrayNaipe;
+    private Naipe[] arrayNaipe;
     final int TAMANIO = 40;
     int index;
 
@@ -74,7 +74,8 @@ public class Baraja {
 
     public Naipe[] sacar(int numCartas) {
         // Crea un array para almacenar las cartas extraídas
-        Naipe[] carta = new Naipe[numCartas];
+        Naipe[] cartaSacar = new Naipe[numCartas];
+        int contador = 0;
         // Verifica si el número de cartas solicitado es válido (entre 1 y 40)
         if (numCartas < 1 || numCartas > 40) {
             System.out.println("Número de cartas no válido");
@@ -89,13 +90,27 @@ public class Baraja {
                 numRd = new Random().nextInt(TAMANIO);
             }
             // Almacena la carta extraída en el array 'carta'
-            carta[i] = arrayNaipe[numRd];
+            cartaSacar[i] = arrayNaipe[numRd];
             // Marca la posición en la baraja como nula, indicando que la carta ha sido extraída
             arrayNaipe[numRd] = null;
         }
-        // Devuelve el array que contiene las cartas extraídas
-        return carta;
+        // Creo un nuevo array con el tamaño - el número que saco de cartas
+        Naipe[] barajaNueva = new Naipe[TAMANIO - numCartas];
+        // Hago un bucle for del array original
+        for (int i = 0; i < arrayNaipe.length; i++) {
+            if (arrayNaipe[i] != null) {// Todas los naipes que no sean null
+            // En la nueva baraja meto todos los naipes que no sean null y 
+            // le añado un contador para que vaya recorriendo todas las posiciones
+            // de arrayNaipe
+                barajaNueva[contador++] = arrayNaipe[i];
+            }
+        }
+        // Reformeo array naipe, dandole el contenido de baraja nueva, ahora el 
+        // array naipe tiene un nuevo tamaño
+        arrayNaipe = barajaNueva;
+        return cartaSacar;
     }
+    
 // Getters y Setters
 
     public Naipe[] getArrayNaipe() {
